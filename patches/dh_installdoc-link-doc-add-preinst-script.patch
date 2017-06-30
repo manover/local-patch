@@ -1,6 +1,6 @@
 --- a/usr/bin/dh_installdocs
 +++ b/usr/bin/dh_installdocs
-@@ -202,6 +202,9 @@
+@@ -213,6 +213,9 @@
  			# the target.
  			addsubstvar($package, 'misc:Depends', "$dh{LINK_DOC} (= \${binary:Version})");
  		}
