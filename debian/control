@@ -3,8 +3,8 @@ Section: devel
 Priority: extra
 Maintainer: Denis Bychkov <manover@gmail.com>
 Uploaders: Denis Bychkov <manover@gmail.com>
-Standards-Version: 3.9.8
-Build-Depends: debhelper (>= 10)
+Standards-Version: 4.0.0
+Build-Depends: debhelper (>= 10.6)
 
 Package: local-patch
 Depends: patch, grep

@@ -1,3 +1,10 @@
+local-patch (0.14) unstable; urgency=medium
+
+  * Support changes of dh_installdocs in dh 10.6
+  * Standards-Version 3.9.8 => 4.0.0, no changes required
+
+ -- Denis Bychkov <manover@gmail.com>  Fri, 30 Jun 2017 02:12:57 -0400
+
 local-patch (0.13) unstable; urgency=medium
 
   * Update dh_installdoc-link-doc-add-preinst-script patch
