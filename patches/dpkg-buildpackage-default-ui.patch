@@ -1,6 +1,6 @@
 --- a/usr/bin/dpkg-buildpackage
 +++ b/usr/bin/dpkg-buildpackage
-@@ -159,7 +159,7 @@
+@@ -161,7 +161,7 @@
  my $signforce = 0;
  my $signreleased = 1;
  my $signsource = 1;
