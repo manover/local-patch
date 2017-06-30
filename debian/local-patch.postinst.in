@@ -1,0 +1,33 @@
+#!/bin/sh
+
+PDIR=/usr/share/#PKG#/patches
+#printf "#PKG# postinst %s\n" "$*" >&2
+
+patch_file() {
+	patch -d / -p1 --no-backup-if-mismatch -f -r - -i $1
+}
+
+case $1 in
+configure|reconfigure)
+	for p in $PDIR/*; do
+		patch_file $p
+	done
+	;;
+triggered)
+	shift
+	for f in $@; do
+		if [ -f "$f" ]; then
+			for p in $(grep -l "$f" -r $PDIR); do
+				patch_file $p
+			done
+		else
+			echo "#PKG#: skipping non-existing file $f"
+		fi
+	done
+	;;
+*)
+	;;
+esac
+
+#DEBHELPER#
+exit 0

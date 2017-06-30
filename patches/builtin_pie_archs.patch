@@ -1,0 +1,11 @@
+--- a/usr/share/perl5/Dpkg/Vendor/Debian.pm
++++ b/usr/share/perl5/Dpkg/Vendor/Debian.pm
+@@ -271,7 +271,7 @@
+     );
+ 
+     my %builtin_pie_arch = map { $_ => 1 } qw(
+-        amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x
++        amd64 x32 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x
+     );
+ 
+     # Mask builtin features that are not enabled by default in the compiler.

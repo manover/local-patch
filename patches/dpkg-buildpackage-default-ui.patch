@@ -1,0 +1,11 @@
+--- a/usr/bin/dpkg-buildpackage
++++ b/usr/bin/dpkg-buildpackage
+@@ -159,7 +159,7 @@
+ my $signforce = 0;
+ my $signreleased = 1;
+ my $signsource = 1;
+-my $signbuildinfo = 1;
++my $signbuildinfo = 0;
+ my $signchanges = 1;
+ my $buildtarget = 'build';
+ my $binarytarget = 'binary';

@@ -1,0 +1,47 @@
+local-patch (0.7) unstable; urgency=medium
+
+  * Remove quotes around the parameter list
+  * Convert another var
+
+ -- Denis Bychkov <manover@gmail.com>  Sun, 29 Jan 2017 20:23:21 -0500
+
+local-patch (0.6) unstable; urgency=medium
+
+  * Support multiple file parameters in trigger
+
+ -- Denis Bychkov <manover@gmail.com>  Sun, 29 Jan 2017 20:05:42 -0500
+
+local-patch (0.5) unstable; urgency=medium
+
+  * Use -d patch options instead of explicit cd
+  * Minor scripts clean-up
+
+ -- Denis Bychkov <manover@gmail.com>  Sat, 28 Jan 2017 20:22:37 -0500
+
+local-patch (0.4) unstable; urgency=medium
+
+  * Handle missing files (in case of the package owning the file is
+    being uninstalled
+
+ -- Denis Bychkov <manover@gmail.com>  Sat, 28 Jan 2017 19:40:29 -0500
+
+local-patch (0.3) unstable; urgency=medium
+
+  * Generate triggers automatically
+  * Convert maintainer scripts to templates
+  * Add patch for dpkg-buildpackage to not sign buildinfo by default
+
+ -- Denis Bychkov <manover@gmail.com>  Sat, 28 Jan 2017 18:35:39 -0500
+
+local-patch (0.2) unstable; urgency=medium
+
+  * Proper build rules
+  * Minor adjustments to maintainer scripts
+
+ -- Denis Bychkov <manover@gmail.com>  Sat, 28 Jan 2017 17:12:00 -0500
+
+local-patch (0.1) unstable; urgency=medium
+
+  * Initial version
+
+ -- Denis Bychkov <manover@gmail.com>  Sat, 28 Jan 2017 16:56:18 -0500

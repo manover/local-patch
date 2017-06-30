@@ -1,0 +1,14 @@
+Source: local-patch
+Section: devel
+Priority: extra
+Maintainer: Denis Bychkov <manover@gmail.com>
+Uploaders: Denis Bychkov <manover@gmail.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 10)
+
+Package: local-patch
+Depends: patch, grep
+Architecture: all
+Multi-Arch: foreign
+Description: Patch some select files post-installation
+ This package is intended to perform an update of some files every time the packages containing those files are re-installed.

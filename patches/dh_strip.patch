@@ -1,0 +1,10 @@
+--- a/usr/bin/dh_strip
++++ b/usr/bin/dh_strip
+@@ -175,6 +175,7 @@
+ my $strip = cross_command("strip");
+ my $no_auto_dbgsym = 0;
+ $no_auto_dbgsym = 1 if get_buildoption('noautodbgsym') or get_buildoption('noddebs');
++$dh{ENABLE_DBGSYM} = 0 if $no_auto_dbgsym;
+ 
+ # Check if a file is an elf binary, shared library, or static library,
+ # for use by File::Find. It'll fill the 3 first arrays with anything
