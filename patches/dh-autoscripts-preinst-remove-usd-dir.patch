@@ -1,0 +1,7 @@
+--- /dev/null
++++ b/usr/share/debhelper/autoscripts/preinst-remove-usd-dir
+@@ -0,0 +1,4 @@
++# Give way to symlink
++if [ -d /usr/share/doc/#PACKAGE# ]; then
++	rm -rf /usr/share/doc/#PACKAGE#
++fi

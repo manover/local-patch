@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PDIR=/usr/share/#PKG#/patches
-#printf "#PKG# postinst %s\n" "$*" >&2
+PDIR=/usr/share/#PACKAGE#/patches
+#printf "#PACKAGE# postinst %s\n" "$*" >&2
 
 patch_file() {
 	patch -d / -p1 --no-backup-if-mismatch -f -r - -i $1
@@ -21,7 +21,7 @@ triggered)
 				patch_file $p
 			done
 		else
-			echo "#PKG#: skipping non-existing file $f"
+			echo "#PACKAGE#: skipping non-existing file $f"
 		fi
 	done
 	;;

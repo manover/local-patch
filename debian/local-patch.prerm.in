@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PDIR=/usr/share/#PKG#/patches
-#printf "#PKG# prerm %s\n" "$*" >&2
+PDIR=/usr/share/#PACKAGE#/patches
+#printf "#PACKAGE# prerm %s\n" "$*" >&2
 
 unpatch_file() {
 	patch -d / -p1 --no-backup-if-mismatch -f -r - -R -i $1

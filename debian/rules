@@ -1,19 +1,21 @@
 #!/usr/bin/make -f
 
-export DH_VERBOSE=1
-export DH_OPTIONS=-v
+export DH_VERBOSE = 1
+export DH_OPTIONS = -v
 
 p = local-patch
-mscripts = postinst prerm triggers
+mscripts = postinst prerm install triggers
 
 %:
 	dh $@
 
-debian/%: debian/%.in
-	sed 's/#PKG#/$(p)/g' $< > $@ 
+debian/$(p).%: debian/$(p).%.in
+	sed 's/#PACKAGE#/$(p)/g' $< > $@ 
 
-override_dh_installdeb: debian/$(p).postinst debian/$(p).prerm
-	sed -nre 's|^--- a([^ ]+)|interest-noawait \1|p' patches/* > debian/$(p).triggers
+debian/$(p).triggers:
+	sed -nre 's|^\+{3} b([^\s]+)|interest-noawait \1|p' patches/*|sort > $@
+
+override_dh_installdeb: $(foreach s,$(mscripts),debian/$(p).$(s))
 	dh_installdeb
 
 override_dh_clean:

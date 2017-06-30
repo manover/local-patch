@@ -1,3 +1,11 @@
+local-patch (0.11) unstable; urgency=medium
+
+  * New patch: make dh_installdoc automatically install maintainer's
+    pre-install script that cleans up a /usr/share/doc/<package> directory
+    when it's being replaced with a symlink.
+
+ -- Denis Bychkov <manover@gmail.com>  Thu, 18 May 2017 15:11:06 -0400
+
 local-patch (0.10) unstable; urgency=medium
 
   * Missing bracket

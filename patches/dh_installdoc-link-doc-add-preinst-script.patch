@@ -1,0 +1,12 @@
+--- a/usr/bin/dh_installdocs
++++ b/usr/bin/dh_installdocs
+@@ -202,6 +202,9 @@
+ 			# the target.
+ 			addsubstvar($package, 'misc:Depends', "$dh{LINK_DOC} (= \${binary:Version})");
+ 		}
++		# Automatically add a preinst maintainer's script that will take care of the
++		# left-over doc directory if it exists (it has to be removed explicitly).
++		autoscript($package, "preinst", "preinst-remove-usd-dir", "s/#PACKAGE#/$package/");
+ 	}
+ 	else {
+ 		ensure_docdir($package);
