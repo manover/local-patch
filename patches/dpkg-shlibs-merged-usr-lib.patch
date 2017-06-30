@@ -1,12 +1,13 @@
 --- a/usr/share/perl5/Dpkg/Shlibs/SymbolFile.pm
 +++ b/usr/share/perl5/Dpkg/Shlibs/SymbolFile.pm
-@@ -272,9 +272,6 @@
+@@ -272,9 +272,7 @@
      my ($self, $src, $objid) = @_;
      if (not $self->has_object($objid)) {
          $self->{objects}{$objid} = $src->get_object($objid);
 -    } else {
 -        warning(g_('tried to merge the same object (%s) twice in a symfile'), $objid);
 -    }
++	}
  }
  
  sub output {

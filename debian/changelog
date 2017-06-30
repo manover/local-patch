@@ -1,3 +1,9 @@
+local-patch (0.10) unstable; urgency=medium
+
+  * Missing bracket
+
+ -- Denis Bychkov <manover@gmail.com>  Wed, 15 Mar 2017 21:32:34 +0000
+
 local-patch (0.9) unstable; urgency=medium
 
   * Handle merged /usr and /lib for dpkg--shlibs
