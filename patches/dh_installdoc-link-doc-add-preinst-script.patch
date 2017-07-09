@@ -1,6 +1,6 @@
 --- a/usr/bin/dh_installdocs
 +++ b/usr/bin/dh_installdocs
-@@ -211,6 +211,11 @@
+@@ -213,6 +213,11 @@
  			if (!-d "$tmp/usr/share/doc" && !-l "$tmp/usr/share/doc") {
  				install_dir("$tmp/usr/share/doc");
  			}

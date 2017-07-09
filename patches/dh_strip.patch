@@ -1,6 +1,6 @@
 --- a/usr/bin/dh_strip
 +++ b/usr/bin/dh_strip
-@@ -175,6 +175,7 @@
+@@ -177,6 +177,7 @@
  my $strip = cross_command("strip");
  my $no_auto_dbgsym = 0;
  $no_auto_dbgsym = 1 if get_buildoption('noautodbgsym') or get_buildoption('noddebs');

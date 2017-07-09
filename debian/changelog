@@ -1,3 +1,12 @@
+local-patch (0.15) unstable; urgency=medium
+
+  * All debhelper scripts now have a version header: +2 to dh patches
+    offsets
+  * Add debhelper to package dependencies
+  * d/rules: Obtain package name using dpkg-parsechangelog
+
+ -- Denis Bychkov <manover@gmail.com>  Sun, 09 Jul 2017 17:35:34 -0400
+
 local-patch (0.14) unstable; urgency=medium
 
   * Support changes of dh_installdocs in dh 10.6
