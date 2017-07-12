@@ -5,16 +5,22 @@ PKG=#PACKAGE#
 
 case $1 in
 configure|reconfigure)
-	for p in ${index[@]}; do
-		patch_file <${PDIR}/$p
+	for f in ${!index[@]}; do
+		[ ! -f "$f" ] && continue;
+		p="${PDIR}/${index[$f]}"
+		if [ ! -f "$p" ]; then
+			echo "#PACKAGE#: bad index file, unable to find $p (patch for $f)" >&2
+		else
+			patch_file <$p
+		fi
 	done
 	;;
 triggered)
 	shift
 	for f in $@; do
 		if [ ! -f "$f" ]; then
-			echo "#PACKAGE#: trigger called for non-existing file $f" >&2
-			exit 1
+			echo "#PACKAGE#: skipping deleted file $f" >&2
+			continue
 		fi
 		p=${index[$f]}
 		#printf "#PACKAGE#: file %s, patches: %s\n" "$f" "$pl" >&2

@@ -4,7 +4,13 @@ PKG=#PACKAGE#
 . /usr/share/#PACKAGE#/maint-helper
 
 for f in ${!index[@]}; do
-	[ ! -f "$f" ] || unpatch_file <${PDIR}/${index[$f]}
+	[ ! -f "$f" ] && continue;
+	p="${PDIR}/${index[$f]}"
+	if [ ! -f "$p" ]; then
+		echo "#PACKAGE#: no patch file $p found (patch for $f)"
+	else
+		unpatch_file <${PDIR}/${index[$f]}
+	fi
 done
 
 #DEBHELPER#

@@ -1,3 +1,10 @@
+local-patch (0.17) unstable; urgency=medium
+
+  * Trigger may be called for deleted file, do not throw an error
+  * Gracefully handle absent files in postinst and prerm
+
+ -- Denis Bychkov <manover@gmail.com>  Wed, 12 Jul 2017 12:21:08 -0400
+
 local-patch (0.16) unstable; urgency=medium
 
   * Generate patch index and use it in maint scripts to find patches
