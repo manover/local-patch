@@ -1,14 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+PKG=#PACKAGE#
 
-PDIR=/usr/share/#PACKAGE#/patches
-#printf "#PACKAGE# prerm %s\n" "$*" >&2
+. /usr/share/#PACKAGE#/maint-helper
 
-unpatch_file() {
-	patch -d / -p1 --no-backup-if-mismatch -f -r - -R -i $1
-}
-
-for p in $PDIR/*; do
-	unpatch_file $p
+for f in ${!index[@]}; do
+	[ ! -f "$f" ] || unpatch_file <${PDIR}/${index[$f]}
 done
 
 #DEBHELPER#

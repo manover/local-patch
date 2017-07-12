@@ -1,1 +1,4 @@
+files usr/share/#PACKAGE#
+maint-helper usr/share/#PACKAGE#
 patches usr/share/#PACKAGE#
+preinst-remove-usd-dir usr/share/debhelper/autoscripts

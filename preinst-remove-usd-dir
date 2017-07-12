@@ -1,0 +1,4 @@
+# Give way to symlink
+if [ -d /usr/share/doc/#PACKAGE# ]; then
+	rm -rf /usr/share/doc/#PACKAGE#
+fi

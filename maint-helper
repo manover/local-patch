@@ -1,0 +1,22 @@
+PDIR=/usr/share/${PKG}/patches
+P_IX=/usr/share/${PKG}/files
+#printf "${PKG}: postinst %s\n" "$*" >&2
+declare -A index
+
+patch_file() {
+    patch -d / -p1 --no-backup-if-mismatch -f -r -
+}
+
+unpatch_file() {
+    patch -d / -p1 --no-backup-if-mismatch -f -r - -R
+}
+
+while read s; do
+    k=$(cut -d' ' -f1 <<<$s)
+    v=$(cut -d' ' -f2 <<<$s)
+    if [ -z "$k" -o -z "$v" ]; then
+        echo "#PACKAGE#: bad line in patch index: $s" >&2
+        continue
+    fi
+    index["$k"]="$v"
+done <${P_IX}

@@ -1,3 +1,13 @@
+local-patch (0.16) unstable; urgency=medium
+
+  * Generate patch index and use it in maint scripts to find patches
+  * Skip patch if file does not exist
+  * Install preinst-remove-usd-dir as a legit package file, rather than
+    patching it in
+  * Remove debhelper dependency from the package
+
+ -- Denis Bychkov <manover@gmail.com>  Wed, 12 Jul 2017 02:58:29 -0400
+
 local-patch (0.15) unstable; urgency=medium
 
   * All debhelper scripts now have a version header: +2 to dh patches

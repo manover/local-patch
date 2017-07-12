@@ -1,27 +1,28 @@
-#!/bin/sh
+#!/bin/bash
+PKG=#PACKAGE#
 
-PDIR=/usr/share/#PACKAGE#/patches
-#printf "#PACKAGE# postinst %s\n" "$*" >&2
-
-patch_file() {
-	patch -d / -p1 --no-backup-if-mismatch -f -r - -i $1
-}
+. /usr/share/#PACKAGE#/maint-helper
 
 case $1 in
 configure|reconfigure)
-	for p in $PDIR/*; do
-		patch_file $p
+	for p in ${index[@]}; do
+		patch_file <${PDIR}/$p
 	done
 	;;
 triggered)
 	shift
 	for f in $@; do
-		if [ -f "$f" ]; then
-			for p in $(grep -l "$f" -r $PDIR); do
-				patch_file $p
-			done
+		if [ ! -f "$f" ]; then
+			echo "#PACKAGE#: trigger called for non-existing file $f" >&2
+			exit 1
+		fi
+		p=${index[$f]}
+		#printf "#PACKAGE#: file %s, patches: %s\n" "$f" "$pl" >&2
+		if [ -z "$p" ]; then
+			echo "#PACKAGE#: triggered for unknown file $f" >&2
+			continue
 		else
-			echo "#PACKAGE#: skipping non-existing file $f"
+			patch_file <${PDIR}/$p
 		fi
 	done
 	;;

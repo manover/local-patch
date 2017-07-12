@@ -2,21 +2,28 @@
 
 export DH_VERBOSE = 1
 export DH_OPTIONS = -v
+PATCHES := $(wildcard patches/*)
 
 p := $(shell dpkg-parsechangelog -SSource)
-mscripts = postinst prerm install triggers
+generated = $(foreach s,postinst prerm install triggers,debian/$(p).$(s)) files
 
 %:
 	dh $@
 
+files: $(PATCHES)
+	for f in $?; do \
+		fn=$$(basename $$f); \
+		sed -nre "s|^-{3} a(.+)\$$|\1 $$fn|p" $$f; \
+	done | sort >$@
+
+debian/$(p).triggers: files
+	awk '{printf ("interest-noawait %s\n", $$1)}' $< >$@
+
 debian/$(p).%: debian/$(p).%.in
-	sed 's/#PACKAGE#/$(p)/g' $< > $@ 
+	sed 's/#PACKAGE#/$(p)/g' <$< >$@ 
 
-debian/$(p).triggers:
-	sed -nre 's|^\+{3} b([^\s]+)|interest-noawait \1|p' patches/*|sort > $@
-
-override_dh_install: $(foreach s,$(mscripts),debian/$(p).$(s))
+override_dh_install: $(generated)
 	dh_install
 
 override_dh_clean:
-	dh_clean $(foreach s,$(mscripts),debian/$(p).$(s))
+	dh_clean $(generated)
